@@ -1,0 +1,49 @@
+---
+title: "hw_map"
+author: "Sudeep"
+date: "10/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_libraries}
+library(ggplot2)
+library(rworldmap)
+```
+
+```{r load data}
+df <- data.frame(Country=c("Nepal"),
+                 ISO3_code=c("NPL"),
+                yes=c(1))
+```
+
+```{r join contry data to map}
+sPDF <- joinCountryData2Map(df,joinCode  = "ISO3",nameJoinColumn = "ISO3_code")
+
+```
+
+```{r plot the data}
+par(mar = c(0.1, 0.1, 1, 0)) 
+map <- mapCountryData(sPDF, nameColumnToPlot="yes", 
+               catMethod = 'categorical', 
+               numCats = 1,
+               colourPalette = c('heat'),
+               missingCountryCol = '#ffff77',
+               oceanCol = '#87CEEB',
+               mapTitle = 'Countries where I\'ve lied about forgetting my homework at home',
+               addLegend = FALSE,
+               )
+ op <- par(cex = 0.6)   #font size in legend
+legend("bottomleft",
+       legend =c('Countries where I\'ve lied\n about forgetting\n my homework at home',
+                 'Countries where I\'ve not\n lied about forgetting\n my homework at home',
+                 'Ocean'), 
+    fill = c('red', '#ffff77', '#87CEEB'),
+    y.intersp = 1.8
+    )
+
+```
+
