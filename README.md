@@ -1,5 +1,5 @@
 # Pointless-plots
-***
+
 #### Countries where I've lied about forgetting my homework at home(Oct 4, 2021)
 ![Homework world map](./homework_map/hw_map.jpg)
 ***
